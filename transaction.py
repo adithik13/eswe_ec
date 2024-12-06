@@ -1,7 +1,7 @@
 class InMemoryDB:
     def __init__(self):
-        self.main_state = {}  # Committed data
-        self.transaction_buffer = None  # Uncommitted changes
+        self.main_state = {} 
+        self.transaction_buffer = None 
 
     def begin_transaction(self):
         if self.transaction_buffer is not None:
@@ -14,9 +14,9 @@ class InMemoryDB:
         self.transaction_buffer[key] = value
 
     def get(self, key):
-        if self.transaction_buffer is None:  # No active transaction
+        if self.transaction_buffer is None: 
             return self.main_state.get(key)
-        return self.main_state.get(key)  # Ignore transaction buffer
+        return self.main_state.get(key) 
 
     def commit(self):
         if self.transaction_buffer is None:
